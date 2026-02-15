@@ -1,0 +1,6 @@
+order_id,customer_id,order_date,amount,country
+1,101,01-01-2026,200,US
+2,102,2026/01/02,,USA
+3,101,03-01-2026,200,US
+4,103,2026-01-04,350,United States
+4,103,2026-01-04,350,United States

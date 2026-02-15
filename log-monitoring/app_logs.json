@@ -1,0 +1,31 @@
+[
+    {
+      "timestamp": "2026-01-01T10:00:01",
+      "service": "auth-service",
+      "endpoint": "/login",
+      "status_code": 200,
+      "response_time_ms": 120
+    },
+    {
+      "timestamp": "2026-01-01T10:02:11",
+      "service": "auth-service",
+      "endpoint": "/login",
+      "status_code": 500,
+      "response_time_ms": 450
+    },
+    {
+      "timestamp": "2026-01-01T10:05:33",
+      "service": "order-service",
+      "endpoint": "/create-order",
+      "status_code": 201,
+      "response_time_ms": 300
+    },
+    {
+      "timestamp": "2026-01-01T10:06:10",
+      "service": "order-service",
+      "endpoint": "/create-order",
+      "status_code": 503,
+      "response_time_ms": 800
+    }
+  ]
+  
