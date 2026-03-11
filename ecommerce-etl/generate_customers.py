@@ -30,23 +30,28 @@ df = pd.DataFrame(data, columns=[
 updates = df.sample(int(N*0.1))
 
 scd_records = []
-for _, row in updates.iterrows():
+for _, row_series in updates.iterrows():
     change_date = datetime(2026,1,1)
-    row["is_current"] = False
-    row["effective_to"] = change_date.strftime("%Y-%m-%d")
-    scd_records.append(row)
 
+    # Create the 'old' SCD record (the one that becomes non-current)
+    old_record_values = row_series.tolist()
+    # Modify the values in the list directly
+    old_record_values[4] = False # 'is_current' column
+    old_record_values[6] = change_date.strftime("%Y-%m-%d") # 'effective_to' column
+    scd_records.append(old_record_values)
+
+    # Create the 'new' SCD record
     scd_records.append([
-        row["customer_id"],
-        row["name"],
+        row_series["customer_id"],
+        row_series["name"],
         random.choice(regions),
-        row["signup_date"],
+        row_series["signup_date"],
         True,
         change_date.strftime("%Y-%m-%d"),
         None
     ])
 
 df = pd.concat([df, pd.DataFrame(scd_records, columns=df.columns)])
-df.to_csv("../data/raw/customers.csv", index=False)
+df.to_csv("ecommerce-etl\data\customers.csv", index=False)
 
 print("Generated 50K customers + SCD records.")

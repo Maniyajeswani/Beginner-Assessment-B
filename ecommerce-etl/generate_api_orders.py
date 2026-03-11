@@ -2,7 +2,8 @@ import pandas as pd
 import random
 import json
 from datetime import datetime, timedelta
-
+import os
+print("Running from:", os.getcwd())
 # Orders JSON
 orders = []
 start = datetime(2026,1,1)
